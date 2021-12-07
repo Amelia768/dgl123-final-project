@@ -7,6 +7,7 @@
 -->
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
     <title>Simpsons Archives</title>
 </head>
 <body>
@@ -77,7 +78,7 @@
                 <div class="characters__container layout-container">
                     <div class="characters__row layout-row">
                         <ul class="characters__items">
-                            
+
                         </ul>
                     </div>
                 </div>

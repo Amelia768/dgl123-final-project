@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+h3:first-child {
+    margin-top: 0px;
+}
+
+.layout-container {
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.layout-row {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-header__logo {
+    width: 140px;
+}
+
+.site-header {
+    margin-bottom: 50px;
+}
+
+.form__image {
+    display: block;
+    width: 100%;
+}
+
+.form__itemsContainer {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+    margin-bottom: 50px;
+}
+
+.form__card {
+    padding: 4%;
+}
+
+.form__item {
+    margin-bottom: 0.5rem;
+}
+
+.form__button {
+    margin-top: 0.5rem;
+}
+
+.characters__itemContainer {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+    margin-bottom: 50px;
+}
+
+.characters__image {
+    width: 100%;
+}
+
+.characters__info {
+    padding: 8%;
+}
+
+.characters__attribute {
+    margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 700px) {
+    .characters__items {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .characters__itemContainer {
+        margin-right: 50px;
+        width: calc((100% - 50px) / 2);
+    }
+
+    .characters__itemContainer:nth-child(even) {
+        margin-right: 0px;
+    }
+}
