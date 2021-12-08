@@ -75,18 +75,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="characters__container layout-container">
+                    <div class="characters__row layout-row">
+                        <ul class="characters__items">
+                            <?php
+                                $conn = mysqli_connect('localhost', 'root', '', 'simpsons_archives');
+
+                                if(isset($_POST['characters'])) {
+                                    $selected = $_POST['characters'];
+                                    get_names($selected);
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>  
 
     <?php
-
-    $conn = mysqli_connect('localhost', 'root', '', 'simpsons_archives');
-
-    if(isset($_POST['characters'])) {
-        $selected = $_POST['characters'];
-        get_names($selected);
-    }
 
     function get_names($selected) {
         foreach ($selected as $character) {
