@@ -54,7 +54,7 @@
                                             <label for="lisa">
                                                 Lisa Simpson
                                             </label>
-                                            <input id="lisa" type="checkbox" name="characters[]" value="lisa">
+                                            <input id="lisa" type="checkbox" name="characters[]" value="Lisa">
                                         </li>
                                         <li class="form__item">
                                             <label for="maggie">
@@ -66,7 +66,7 @@
                                             <label for="moe">
                                                 Moe Szyslak
                                             </label>
-                                            <input id="moe" type="checkbox" name="characters[]" value="moe">
+                                            <input id="moe" type="checkbox" name="characters[]" value="moe")>
                                         </li>
                                     </ul>
                                     <input class="form__button" type="submit" value="Show Characters">
@@ -83,50 +83,56 @@
 
     $conn = mysqli_connect('localhost', 'root', '', 'simpsons_archives');
 
-    if(! $conn) {
-        echo 'could not connect';
+    if(isset($_POST['characters'])) {
+        $selected = $_POST['characters'];
+        get_names($selected);
     }
 
-    global $name;
-    $sql = "SELECT * FROM characters WHERE first_name = 'marge'";
-    $results = $conn->query($sql); ?>
+    function get_names($selected) {
+        foreach ($selected as $character) {
+            $name = $character;
+            get_data($name);
+        }
+    }
 
-    <div class="characters__container layout-container">
-        <div class="characters__row layout-row">
-            <ul class="characters__items">
+    function get_data($name) {
+        global $conn;
+        if(! $conn) {
+            echo 'could not connect';
+        }
 
-                <?php if ($results->num_rows > 0) : ?>
-                    <?php while($row = $results->fetch_assoc()) : ?>
-                        <li class="characters__itemContainer">
-                            <div class="characters__item">
-                                <img src=" <?= $row["image_url"] ?> " alt="marge" class="characters__image">
-                                <div class="characters__info">
-                                    <h3 class="characters__name">
-                                        <?= $row["first_name"]. " " . $row["last_name"] ?>
-                                    </h3>
-                                    <div class="characters__age characters__attribute">
-                                        <b>Age:</b>
-                                        <?= $row["age"] ?>
-                                    </div>
-                                    <div class="characters__occupation characters__attribute">
-                                        <b>Occupation:</b>
-                                        <?= $row["occupation"] ?>
-                                    </div>
-                                    <div class="characters__voicedBy characters__attribute">
-                                        <b>Voiced by:</b>
-                                        <?= $row["voiced_by"] ?>
-                                    </div>
-                                </div>
+        $sql = "SELECT * FROM characters WHERE first_name = '$name'";
+        $results = $conn->query($sql); ?>
+
+        <?php if ($results->num_rows > 0) : ?>
+            <?php while($row = $results->fetch_assoc()) : ?>
+                <li class="characters__itemContainer">
+                    <div class="characters__item">
+                        <img src=" <?= $row["image_url"] ?> " alt="marge" class="characters__image">
+                        <div class="characters__info">
+                            <h3 class="characters__name">
+                                <?= $row["first_name"]. " " . $row["last_name"] ?>
+                            </h3>
+                            <div class="characters__age characters__attribute">
+                                <b>Age:</b>
+                                <?= $row["age"] ?>
                             </div>
-                        </li>
-                    <?php endwhile ?>
-                <?php else : ?>
-                    <p>0 results<p>
-                <?php endif ?>
-
-            </ul>
-        </div>
-    </div>
+                            <div class="characters__occupation characters__attribute">
+                                <b>Occupation:</b>
+                                <?= $row["occupation"] ?>
+                            </div>
+                            <div class="characters__voicedBy characters__attribute">
+                                <b>Voiced by:</b>
+                                <?= $row["voiced_by"] ?>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endwhile ?>
+        <?php else : ?>
+            <p>0 results<p>
+        <?php endif ;
+    }  ?>
 
 </body>
 </html>
