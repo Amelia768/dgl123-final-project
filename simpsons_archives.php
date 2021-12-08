@@ -36,37 +36,79 @@
                                             <label for="homer">
                                                 Homer Simpson
                                             </label>
-                                            <input id="homer" type="checkbox" name="characters[]" value="homer">
+                                            <input id="homer" type="checkbox" name="characters[]" value="homer"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('homer', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                         <li class="form__item">
                                             <label for="marge">
                                                 Marge Simpson
                                             </label>
-                                            <input id="marge" type="checkbox" name="characters[]" value="marge">
+                                            <input id="marge" type="checkbox" name="characters[]" value="marge"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('marge', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                         <li class="form__item">
                                             <label for="bart">
                                                 Bart Simpson
                                             </label>
-                                            <input id="bart" type="checkbox" name="characters[]" value="bart">
+                                            <input id="bart" type="checkbox" name="characters[]" value="bart"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('bart', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                         <li class="form__item">
                                             <label for="lisa">
                                                 Lisa Simpson
                                             </label>
-                                            <input id="lisa" type="checkbox" name="characters[]" value="Lisa">
+                                            <input id="lisa" type="checkbox" name="characters[]" value="lisa"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('lisa', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                         <li class="form__item">
                                             <label for="maggie">
                                                 Maggie Simpson
                                             </label>
-                                            <input id="maggie" type="checkbox" name="characters[]" value="maggie">
+                                            <input id="maggie" type="checkbox" name="characters[]" value="maggie"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('maggie', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                         <li class="form__item">
                                             <label for="moe">
                                                 Moe Szyslak
                                             </label>
-                                            <input id="moe" type="checkbox" name="characters[]" value="moe")>
+                                            <input id="moe" type="checkbox" name="characters[]" value="moe"
+                                                <?php 
+                                                    $characters = $_POST['characters'];
+                                                    if(in_array('moe', $characters)) {
+                                                        echo ' checked="checked"';
+                                                    }
+                                                ?>
+                                            >
                                         </li>
                                     </ul>
                                     <input class="form__button" type="submit" value="Show Characters">
