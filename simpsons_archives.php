@@ -12,7 +12,7 @@
 </head>
 <body>
     <header id="masthead" class="site-header layout-container">
-        <a href="/">
+        <a href="simpsons_archives.php">
             <img src="images/logo.svg" alt="Logo" class="site-header__logo">
         </a>
     </header>
@@ -37,11 +37,13 @@
                                                 Homer Simpson
                                             </label>
                                             <input id="homer" type="checkbox" name="characters[]" value="homer"
-                                                <?php 
+                                                <?php
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('homer', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -51,10 +53,12 @@
                                             </label>
                                             <input id="marge" type="checkbox" name="characters[]" value="marge"
                                                 <?php 
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('marge', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -64,10 +68,12 @@
                                             </label>
                                             <input id="bart" type="checkbox" name="characters[]" value="bart"
                                                 <?php 
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('bart', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -77,10 +83,12 @@
                                             </label>
                                             <input id="lisa" type="checkbox" name="characters[]" value="lisa"
                                                 <?php 
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('lisa', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -90,10 +98,12 @@
                                             </label>
                                             <input id="maggie" type="checkbox" name="characters[]" value="maggie"
                                                 <?php 
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('maggie', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -103,10 +113,12 @@
                                             </label>
                                             <input id="moe" type="checkbox" name="characters[]" value="moe"
                                                 <?php 
+                                                if(isset($_POST['characters'])) {
                                                     $characters = $_POST['characters'];
                                                     if(in_array('moe', $characters)) {
                                                         echo ' checked="checked"';
                                                     }
+                                                }
                                                 ?>
                                             >
                                         </li>
@@ -181,7 +193,12 @@
         <?php else : ?>
             <p>0 results<p>
         <?php endif ;
-    }  ?>
+    }  
+    
+    function clear_fields() {
+        
+    }
+    ?>
 
 </body>
 </html>
