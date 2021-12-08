@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Simpsons Archives</title>
+    <title>Simpsons Archives | Final Project</title>
 </head>
 <body>
     <header id="masthead" class="site-header layout-container">
@@ -17,6 +17,7 @@
         </a>
     </header>
 
+    <!-- Form -->
     <div id="content"class="site-content">
         <div id="primary" class="content-area">
             <div id="main" class="site-main">
@@ -129,6 +130,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Dynamic Content -->
                 <div class="characters__container layout-container">
                     <div class="characters__row layout-row">
                         <ul class="characters__items">
@@ -175,16 +178,13 @@
                                 <?= $row["first_name"]. " " . $row["last_name"] ?>
                             </h3>
                             <div class="characters__age characters__attribute">
-                                <b>Age:</b>
-                                <?= $row["age"] ?>
+                                <?= display_age($row) ?>
                             </div>
                             <div class="characters__occupation characters__attribute">
-                                <b>Occupation:</b>
-                                <?= $row["occupation"] ?>
+                                <?= display_occupation($row) ?>
                             </div>
                             <div class="characters__voicedBy characters__attribute">
-                                <b>Voiced by:</b>
-                                <?= $row["voiced_by"] ?>
+                                <?= display_voice($row) ?>
                             </div>
                         </div>
                     </div>
@@ -194,10 +194,25 @@
             <p>0 results<p>
         <?php endif ;
     }  
-    
-    function clear_fields() {
-        
+
+    function display_age($row) {
+        if (!empty($row["age"])) {
+            echo '<b>Age: </b>' . $row["age"];
+        }
     }
+
+    function display_occupation($row) {
+        if (!empty($row["occupation"])) {
+            echo '<b>Occupation: </b>' . $row["occupation"];
+        }
+    }
+
+    function display_voice($row) {
+        if (!empty($row["voiced_by"])) {
+            echo '<b>Voiced by: </b>' . $row["voiced_by"];
+        }
+    }
+
     ?>
 
 </body>

@@ -34,7 +34,6 @@ CREATE TABLE `characters` (
   `occupation` varchar(255) NOT NULL,
   `voiced_by` varchar(255) NOT NULL,
   `image_url` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'unselected'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
