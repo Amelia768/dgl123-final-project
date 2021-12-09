@@ -4,6 +4,7 @@
     DGL123
     Final Project
     Amelia Manky
+    12/08/21
 -->
 <head>
     <meta charset="UTF-8">
@@ -90,13 +91,6 @@
         }
     }
 
-    function get_names($selected) {
-        foreach ($selected as $character) {
-            $name = $character;
-            get_data($name);
-        }
-    }
-
     function get_data($name) {
         global $conn;
         if(! $conn) {
@@ -132,6 +126,13 @@
             <p>0 results<p>
         <?php endif ;
     }  
+
+    function get_names($selected) {
+        foreach ($selected as $character) {
+            $name = $character;
+            get_data($name);
+        }
+    }
 
     function display_age($row) {
         if (!empty($row["age"])) {
