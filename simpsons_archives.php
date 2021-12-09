@@ -134,6 +134,7 @@
         }
     }
 
+    // Check to see if rows contain data //
     function display_age($row) {
         if (!empty($row["age"])) {
             echo '<b>Age: </b>' . $row["age"];
