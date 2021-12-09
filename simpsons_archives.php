@@ -29,100 +29,12 @@
                             </div>
                             <div class="form__card">
                                 <h3 class="form__heading">
-                                    Select characters to show
+                                    Want to learn more about the Simpsons?
                                 </h3>
+                                <p>Select the characters you'd like to read more about.</p>
                                 <form action="" method="POST">
                                     <ul class="form__items">
-                                        <li class="form__item">
-                                            <label for="homer">
-                                                Homer Simpson
-                                            </label>
-                                            <input id="homer" type="checkbox" name="characters[]" value="homer"
-                                                <?php
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('homer', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
-                                        <li class="form__item">
-                                            <label for="marge">
-                                                Marge Simpson
-                                            </label>
-                                            <input id="marge" type="checkbox" name="characters[]" value="marge"
-                                                <?php 
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('marge', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
-                                        <li class="form__item">
-                                            <label for="bart">
-                                                Bart Simpson
-                                            </label>
-                                            <input id="bart" type="checkbox" name="characters[]" value="bart"
-                                                <?php 
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('bart', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
-                                        <li class="form__item">
-                                            <label for="lisa">
-                                                Lisa Simpson
-                                            </label>
-                                            <input id="lisa" type="checkbox" name="characters[]" value="lisa"
-                                                <?php 
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('lisa', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
-                                        <li class="form__item">
-                                            <label for="maggie">
-                                                Maggie Simpson
-                                            </label>
-                                            <input id="maggie" type="checkbox" name="characters[]" value="maggie"
-                                                <?php 
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('maggie', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
-                                        <li class="form__item">
-                                            <label for="moe">
-                                                Moe Szyslak
-                                            </label>
-                                            <input id="moe" type="checkbox" name="characters[]" value="moe"
-                                                <?php 
-                                                if(isset($_POST['characters'])) {
-                                                    $characters = $_POST['characters'];
-                                                    if(in_array('moe', $characters)) {
-                                                        echo ' checked="checked"';
-                                                    }
-                                                }
-                                                ?>
-                                            >
-                                        </li>
+                                        <?php generate_form() ?>
                                     </ul>
                                     <input class="form__button" type="submit" value="Show Characters">
                                 </form>
@@ -130,8 +42,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Dynamic Content -->
                 <div class="characters__container layout-container">
                     <div class="characters__row layout-row">
                         <ul class="characters__items">
@@ -151,6 +61,34 @@
     </div>  
 
     <?php
+
+    function generate_form() {
+        $conn = mysqli_connect('localhost', 'root', '', 'simpsons_archives');
+        $sql = 'SELECT * FROM characters';
+        $results = $conn->query($sql);
+        
+        if ($results->num_rows > 1) {
+            foreach ($results as $character) {
+                while($row = $results->fetch_assoc()){
+                    $firstname = $row['first_name'];
+                    $fullname = $firstname . " " . $row['last_name'];
+
+                    echo '<li class="form__item">
+                        <label for = "' . $firstname . '">' . $fullname . '</label>
+                        <input id="' . $firstname . '" type="checkbox" name="characters[]" value="' . $firstname . '"';
+                        if (isset($_POST['characters'])) {
+                            $characters = $_POST['characters'];
+                            if(in_array($firstname, $characters)) {
+                                echo ' checked="checked"';
+                            }
+                        }
+                    '>';
+
+                    echo '<br>';
+                }
+            }
+        }
+    }
 
     function get_names($selected) {
         foreach ($selected as $character) {
