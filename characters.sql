@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 08, 2021 at 01:36 AM
+-- Generation Time: Dec 09, 2021 at 01:41 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -33,20 +33,21 @@ CREATE TABLE `characters` (
   `age` int(255) NOT NULL,
   `occupation` varchar(255) NOT NULL,
   `voiced_by` varchar(255) NOT NULL,
-  `image_url` varchar(255) NOT NULL,
+  `image_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `characters`
 --
 
-INSERT INTO `characters` (`first_name`, `last_name`, `age`, `occupation`, `voiced_by`, `image_url`, `status`) VALUES
-('Homer', 'Simpson', 40, 'Nuclear Safety Inspector', 'Dan Castellaneta', 'images/homer.png', 'unselected'),
-('Marge', 'Homer', 40, 'Homemaker', 'Julie Kavner', 'images/marge.png', 'unselected'),
-('Bart', 'Simpson', 10, 'Student', 'Nancy Cartwright', 'images/bart.png', 'unselected'),
-('Lisa', 'Simpson', 8, 'Student', 'Yeardley Smith', 'images/lisa.png', 'unselected'),
-('Maggie', 'Simpson', 8, '', '', 'images/maggie.png', 'unselected'),
-('Moe', 'Szyslak', 55, 'Bartender', '', 'images/moe.png', 'unselected');
+INSERT INTO `characters` (`first_name`, `last_name`, `age`, `occupation`, `voiced_by`, `image_url`) VALUES
+('first_name', 'last_name', 0, 'occupation', 'voiced_by', 'image_url'),
+('Homer', 'Simpson', 40, 'Nuclear Safety Inspector', 'Dan Castellaneta', 'images/homer.png'),
+('Marge', 'Simpson', 40, 'Homemaker', 'Julie Kavner', 'images/marge.png'),
+('Bart', 'Simpson', 10, 'Student', 'Nancy Cartwright', 'images/bart.png'),
+('Lisa', 'Simpson', 8, 'Student', 'Yeardley Smith', 'images/lisa.png'),
+('Maggie', 'Simpson', 8, '', '', 'images/maggie.png'),
+('Moe', 'Szyslak', 55, 'Bartender', '', 'images/moe.png');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
